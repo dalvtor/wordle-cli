@@ -123,7 +123,7 @@ def main():
     except KeyboardInterrupt:
         exit()
     except curses.error:
-        text = "The terminal is not tall enough. Make it taller and relaunch"
+        text = "An error occurred while launching the game, the terminal might not be tall enough"
         screen.addstr(0, curses.COLS // 2 - (len(text)) // 2, text)
         screen.refresh()
 
