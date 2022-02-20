@@ -111,7 +111,10 @@ class Wordle:
 
 
 def main():
-    Wordle()
+    try:
+        Wordle()
+    except KeyboardInterrupt:
+        exit()
 
 
 if __name__ == '__main__':
