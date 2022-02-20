@@ -1,5 +1,10 @@
 import curses
 import random
+try:
+    import importlib.resources as pkg_resources
+except ImportError:
+    import importlib_resources as pkg_resources
+import data
 
 
 class Wordle:
@@ -42,7 +47,7 @@ class Wordle:
         """
         Main game loop
         """
-        words = open("words.txt", "r").read().split("\n")
+        words = pkg_resources.read_text(data, "words.txt").split("\n")
         word = random.choice(words).upper()
         curses.start_color()
         curses.use_default_colors()
@@ -84,7 +89,8 @@ class Wordle:
                     self.valid_chars[char] = color
                 elif char in word:
                     color = curses.color_pair(2)
-                    if char not in self.valid_chars or char in self.valid_chars and self.valid_chars[char] != curses.color_pair(1):
+                    if char not in self.valid_chars or char in self.valid_chars and self.valid_chars[
+                        char] != curses.color_pair(1):
                         self.valid_chars[char] = color
                 else:
                     color = curses.color_pair(3)
@@ -103,11 +109,18 @@ class Wordle:
                 exit(0)
 
         # Game lost
-        text = f"You failed Danny, the word was {word}"
+        text = f"You lost, the word was {word}"
         self.screen.addstr(9, curses.COLS // 2 - (len(text)) // 2, text, curses.color_pair(4))
         self.screen.clrtobot()
         self.screen.refresh()
 
 
-if __name__ == "__main__":
-    Wordle()
+def main():
+    try:
+        Wordle()
+    except KeyboardInterrupt:
+        exit()
+
+
+if __name__ == '__main__':
+    main()
