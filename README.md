@@ -5,7 +5,7 @@ Play Wordle in your terminal
 
 ### How to run this?
 You will need Python installed.  
-1. First, [download the game from here](https://github.com/dalvtor/wordle-cli/archive/refs/tags/v0.4.zip) and 
+1. First, [download the game from here](https://github.com/dalvtor/wordle-cli/archive/refs/tags/v0.5.zip) and 
 uncompress it.  
 2. Head to the folder where it was uncompressed, open a terminal and type the command```python3 setup.py develop```  
 3. The game will be available from anywhere by typing ```wordle``` in your terminal.

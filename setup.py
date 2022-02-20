@@ -4,7 +4,7 @@ setup(
     name='wordle',
     entry_points={
         'console_scripts': [
-            'wordle = wordle:main',
+            'wordle = wordle.wordle:main',
         ],
     }
 )
