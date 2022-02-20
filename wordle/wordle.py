@@ -1,5 +1,6 @@
 import curses
 import random
+
 try:
     import importlib.resources as pkg_resources
 except ImportError:
@@ -9,8 +10,8 @@ import data
 
 class Wordle:
 
-    def __init__(self):
-        self.screen = curses.initscr()
+    def __init__(self, screen):
+        self.screen = screen
         self.keyboard = [
             ["Q", " ", "W", " ", "E", " ", "R", " ", "T", " ", "Y", " ", "U", " ", "I", " ", "O", " ", "P"],
             [" ", "A", " ", "S", " ", "D", " ", "F", " ", "G", " ", "H", " ", "J", " ", "K", " ", "L"],
@@ -89,8 +90,8 @@ class Wordle:
                     self.valid_chars[char] = color
                 elif char in word:
                     color = curses.color_pair(2)
-                    if char not in self.valid_chars or char in self.valid_chars and self.valid_chars[
-                        char] != curses.color_pair(1):
+                    if char not in self.valid_chars or \
+                            char in self.valid_chars and self.valid_chars[char] != curses.color_pair(1):
                         self.valid_chars[char] = color
                 else:
                     color = curses.color_pair(3)
@@ -116,10 +117,15 @@ class Wordle:
 
 
 def main():
+    screen = curses.initscr()
     try:
-        Wordle()
+        Wordle(screen)
     except KeyboardInterrupt:
         exit()
+    except curses.error:
+        text = "The terminal is not tall enough. Make it taller and relaunch"
+        screen.addstr(0, curses.COLS // 2 - (len(text)) // 2, text)
+        screen.refresh()
 
 
 if __name__ == '__main__':
