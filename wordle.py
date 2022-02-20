@@ -84,7 +84,8 @@ class Wordle:
                     self.valid_chars[char] = color
                 elif char in word:
                     color = curses.color_pair(2)
-                    if char not in self.valid_chars or char in self.valid_chars and self.valid_chars[char] != curses.color_pair(1):
+                    if char not in self.valid_chars or char in self.valid_chars and self.valid_chars[
+                        char] != curses.color_pair(1):
                         self.valid_chars[char] = color
                 else:
                     color = curses.color_pair(3)
@@ -109,5 +110,9 @@ class Wordle:
         self.screen.refresh()
 
 
-if __name__ == "__main__":
+def main():
     Wordle()
+
+
+if __name__ == '__main__':
+    main()
