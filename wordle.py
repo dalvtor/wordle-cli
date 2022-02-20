@@ -103,7 +103,7 @@ class Wordle:
                 exit(0)
 
         # Game lost
-        text = f"You failed Danny, the word was {word}"
+        text = f"You lost, the word was {word}"
         self.screen.addstr(9, curses.COLS // 2 - (len(text)) // 2, text, curses.color_pair(4))
         self.screen.clrtobot()
         self.screen.refresh()
