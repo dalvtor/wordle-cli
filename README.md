@@ -15,6 +15,6 @@ uncompress it.
 Just to play around with the Python curses module
 
 ### Disclaimer
-- This has only been tested in Linux. It won't probably work in other operating systems
+- This has only been tested in Linux. It probably won't work in other operating systems
 - The terminal has to be tall enough to show the game. If it crashes, please resize it so it's taller and relaunch the game
 - The code is awful, this was created for fun in a couple hours by someone who had no idea about curses
