@@ -1,5 +1,10 @@
 import curses
 import random
+try:
+    import importlib.resources as pkg_resources
+except ImportError:
+    import importlib_resources as pkg_resources
+import data
 
 
 class Wordle:
@@ -42,7 +47,7 @@ class Wordle:
         """
         Main game loop
         """
-        words = open("words.txt", "r").read().split("\n")
+        words = pkg_resources.read_text(data, "words.txt").split("\n")
         word = random.choice(words).upper()
         curses.start_color()
         curses.use_default_colors()
